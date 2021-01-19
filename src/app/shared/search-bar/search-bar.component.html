@@ -1,0 +1,15 @@
+<fieldset class="form-inline">
+  <div class="form-group">
+    <input id="typeahead-http"
+           type="text"
+           class="form-control rounded-0"
+           [(ngModel)]="word"
+           [ngbTypeahead]="search"
+           placeholder="Buscar productos"/>
+    <button [disabled]="this.word.length < 3"
+            class="btn material-icons mi-search border-left ml-4"
+            (click)="searchWord()"></button>
+    <small *ngIf="searching" class="form-text text-muted">Buscando...</small>
+    <div class="invalid-feedback" *ngIf="searchFailed">Sorry, suggestions could not be loaded.</div>
+  </div>
+</fieldset>

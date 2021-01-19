@@ -1,0 +1,63 @@
+<form class="form-group">
+  <span class="text-black-50 font-weight-bold"> </span>
+  <div class="form-group row">
+    <label for="paymentMethod" class="col-form-label col-sm-3">{{'PAYMENT_METHOD_MODULE.LABEL_PAYMENT_METHOD' |
+      translate}}</label>
+    <div class="col-sm-6">
+      <select class="form-control" id="paymentMethod" name="id" [(ngModel)]="paymentMethod.id">
+        <option selected disabled [ngValue]="0" >{{paymentMethod.description}}</option>
+        <option *ngFor="let paymentMethodObj of paymentMethods" [ngValue]="paymentMethodObj.id">
+          {{paymentMethodObj.description}}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="reference" class="col-form-label col-sm-3">{{'PAYMENT_METHOD_MODULE.LABEL_REF' | translate}}</label>
+    <div class="col-sm-6">
+      <input id="reference"
+             class="form-control" name="reference" placeholder="{{'PAYMENT_METHOD_MODULE.LABEL_COD_REF' | translate}}"
+             [(ngModel)]="paymentInvoiceInput.reference">
+    </div>
+  </div>
+  <!--<div class="form-group row">-->
+  <!--<label for="bank" class="col-form-label col-sm-3">{{'PAYMENT_METHOD_MODULE.LABEL_BANK_NAME' |-->
+  <!--translate}}</label>-->
+  <!--<div class="col-sm-6">-->
+  <!--<select class="form-control" id="bank">-->
+  <!--<option value=0 [formControlName]="bankId">{{'GENERIC_TEXT.LABEL_SELECTION' | translate}}</option>-->
+  <!--<option value=1 [formControlName]="bankId">BANESCO BANCO UNIVERSAL</option>-->
+  <!--<option value=2 [formControlName]="bankId">MERCANTIL</option>-->
+  <!--<option value=3 [formControlName]="bankId">PROVINCIAL</option>-->
+  <!--<option *ngFor="let paymentMethod of paymentMethods" [value]="paymentMethod.id">-->
+  <!--{{paymentMethod.description}}-->
+  <!--</option>-->
+  <!--</select>-->
+  <!--</div>-->
+  <!--</div>-->
+  <div class="form-group row">
+    <label for="amount" class="col-form-label col-sm-3">{{'PAYMENT_METHOD_MODULE.LABEL_AMOUNT' | translate}}</label>
+    <div class="col-sm-6">
+      <input id="amount" type="number" class="form-control" [value]="0 | currency : 'Bs.'"
+             [(ngModel)]="paymentInvoiceInput.amount" [ngModelOptions]="{standalone: true}">
+    </div>
+  </div>
+  <div>
+    <button TYPE="button" class="material-icons mi-check" (click)="savePaymentMethods()"></button>
+  </div>
+</form>
+
+<!--Usar este codigo para final-->
+<!--<div class="form-group row">-->
+<!--<label for="status" class="col-form-label col-sm-3">Pagos</label>-->
+<!--<div class="col-sm-6">-->
+<!--<select class="form-control" id="status"-->
+<!--[(ngModel)]="item.status"-->
+<!--[ngModelOptions]="{standalone: true}">-->
+<!--<option *ngFor="let sta of status" [value]="sta.statusId">-->
+<!--{{sta.nameStatus}}-->
+<!--</option>-->
+<!--</select>-->
+<!--</div>-->
+<!--</div>-->
+

@@ -1,0 +1,35 @@
+{
+  "GENERIC_TEXT": {
+    "LABEL_ID": "Id",
+    "LABEL_CUSTOMER_IDENTIFICATION": "Identification Customer",
+    "LABEL_SINCE": "Since",
+    "LABEL_UNTIL": "Until",
+    "LABEL_TOTAL": "Total",
+    "LABEL_SUBTOTAL": "Sub-Total",
+    "LABEL_OBSERVATION": "Observation",
+    "LABEL_ACTION": "Action",
+    "LABEL_CREATION_DATE": "Creation Date",
+    "LABEL_SEARCH": "Search",
+    "LABEL_SALE": "Sale",
+    "ATTRIBUTE_TABLE": "Here search all column of table",
+    "LABEL_DATE": "Date",
+    "LABEL_ITEM": "Item",
+    "LABEL_QTY_SHORT": "Qty",
+    "LABEL_PRICE_UNIT_SHORT": "Unit Price",
+    "LABEL_PRICE_TOTAL_SHORT": "Total Price Item",
+    "EXPORT_SHEET": "Excel Export",
+    "LABEL_PRICE": "Price"
+  },
+  "INVOICE_MODULE": {
+    "LABEL_ITEM_BUYED": "Buyed Items",
+    "LABEL_SALES": "Sales",
+    "LABEL_LIST_INVOICES": "Invoices List",
+    "LABEL_SEARCH_INVOICE": "Search Invoices",
+    "LABEL_ID_INVOICE": "Number"
+  },
+  "FOREIGN_CURRENCY": {
+    "LABEL_FOREIGN_TYPE": "Foreign Type",
+    "MSG_TYPE_CURRENCY": "Must enter the type of foreign currency",
+    "MSG_PRICE": "Price is required"
+  }
+}

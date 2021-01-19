@@ -1,0 +1,33 @@
+<app-alert-top *ngIf="!alertsModel.isShow" ></app-alert-top>
+<div class="wrapper-side-bar">
+  <nav id="sidebar" #sidebar [ngClass]="[toggleClass]">
+    <app-side-bar></app-side-bar>
+  </nav>
+  <div>
+    <nav class="navbar navbar-expand-lg navbar-light color-items-bg">
+      <div class="container-fluid">
+        <button type="button" id="sidebarCollapse" class="btn color-items-bg"
+                (click)="collapseSideBar()">
+          <i class="material-icons mi-more-vert" *ngIf="toggleClass == 'active' "></i>
+          <i class="material-icons mi-more-horiz" *ngIf="toggleClass == '' "></i>
+        </button>
+      </div>
+    </nav>
+    <ul class="navbar nav mt-4 ml-3">
+      <li class="nav-item" *ngFor="let item of items">
+        <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem; height: 25rem">
+          <img
+            src="{{urlEndpoint + methodLoadCPhoto + item.imageName + '/' + PHOTO_ITEM }}"
+            class="card-img-top image-size" alt="{{item.nameMedia}}" loading="lazy">
+          <div class="card-body">
+            <h5 class="card-title">{{item.nameMedia}}</h5>
+            <p class="text-left">{{item.price | currency : 'Bs.'}}</p>
+            <p class="text-left" *ngIf="item.quantity > 0">Cantidad: {{item.quantity}}
+              <span type="button" class="material-icons ml-4 text-dark" (click)="sendItemToShoppingCart(item)">add_shopping_cart</span></p>
+            <p class="text-center badge badge-warning" *ngIf="item.quantity < 1">No Disponible</p>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

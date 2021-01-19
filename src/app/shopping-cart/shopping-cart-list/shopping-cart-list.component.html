@@ -1,0 +1,198 @@
+<div class="card bg-light mb-3">
+  <div class="jumbotron jumbotron-fluid" *ngIf="basket.length < 1">
+    <div class="container">
+      <h1 class="display-4">{{'SHOPPING_CART_MODULE.LABEL_BASKET_EMPTY' | translate}}<span
+        class="material-icons mi-font-large">remove_shopping_cart</span></h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-9 col-md-6" *ngIf="!showPaymentMethod && basket.length > 0 ">
+      <div class="card-header">
+        <div class="form-inline">
+          <span class="material-icons mi-shopping-cart"></span>
+          <span>{{'SHOPPING_CART_MODULE.LABEL_CART' | translate}}</span>
+        </div>
+      </div>
+      <form class="card-body">
+        <form *ngFor="let item of basket; let i=index">
+          <div class="row form-inline">
+            <div class="col">
+              <img
+                src="{{urlEndpoint + methodLoadCPhoto + item.imageName + '/' + PHOTO_ITEM }}"
+                class="card-img-top image-size" alt="{{ item.nameMedia }}" style="width: 80px; height: 80px"
+                loading="lazy">
+            </div>
+            <div class="col">
+              <label class="text-black-50 text-wrap text-center" style="width: 6rem">
+                {{ item.nameMedia }}
+              </label>
+            </div>
+            <div class="col">
+              <label class="text-left">
+                {{ item.price | currency : 'Bs.' }}
+              </label>
+            </div>
+            <span class="material-icons mi-remove-circle mouse-pointer"
+                  (click)="decrementItemToBasket(item); validateQtyPurchase(i)"></span>
+            <div class="col">
+              <input id="item-price" class="form-control  text-center " type="number" min="1"
+                     (click)="validateQtyPurchase(i)" [value]="item.qtyPurchase">
+            </div>
+            <span class="material-icons mi-add-circle mouse-pointer"
+                  (click)="addItemToBasket(item); validateQtyPurchase(i)"></span>
+            <div class="col">
+              <span class="material-icons text-black-50 mouse-pointer" (click)="removeItem(i)">delete</span>
+            </div>
+          </div>
+          <div>
+            <div class="dropdown-divider"></div>
+          </div>
+        </form>
+      </form>
+      <form *ngIf="showPaymentMethod">
+        <div class="card-header">
+          <div class="form-inline">
+            <span class="material-icons mi-payment"></span>
+            <span> {{'PAYMENT_METHOD_MODULE.LABEL_PAYMENT_METHODS' | translate}}</span>
+          </div>
+        </div>
+        <div class="card-body offset-2">
+          <div class="justify-content-between">
+            <app-payment-methods></app-payment-methods>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-lg-9 col-md-6" *ngIf="showPaymentMethod && basket.length > 0 &&  basket.length < 4">
+      <div class="card-header">
+        <div class="form-inline row">
+          <span class="material-icons mi-shopping-cart"></span>
+          <span>{{'SHOPPING_CART_MODULE.LABEL_CART' | translate}}</span>
+          <span class="material-icons mi-arrow-back offset-lg-10 offset-md-3"></span>
+        </div>
+      </div>
+      <form class="card-body">
+        <form *ngFor="let item of basket; let i=index">
+          <div class="row form-inline">
+            <div class="col">
+              <img
+                src="{{urlEndpoint + methodLoadCPhoto + item.imageName + '/' + PHOTO_ITEM }}"
+                class="card-img-top image-size" alt="{{ item.nameMedia }}" style="width: 80px; height: 80px"
+                loading="lazy"
+              >
+            </div>
+            <div class="col">
+              <label class="text-black-50 text-wrap text-center" style="width: 6rem">
+                {{ item.nameMedia }}
+              </label>
+            </div>
+            <div class="col">
+              <label class="text-left">
+                {{ item.price | currency : 'Bs.' }}
+              </label>
+            </div>
+            <div class="col">
+              <label id="item-price-to-buy" class="text-center ">{{item.qtyPurchase}}</label>
+            </div>
+          </div>
+          <div>
+            <div class="dropdown-divider"></div>
+          </div>
+        </form>
+      </form>
+      <form *ngIf="showPaymentMethod">
+        <div class="card-header">
+          <div class="form-inline">
+            <span class="material-icons mi-payment"></span>
+            <span> {{'PAYMENT_METHOD_MODULE.LABEL_PAYMENT_METHODS' | translate}}</span>
+          </div>
+        </div>
+        <div class="card-body offset-2">
+          <div class="justify-content-between">
+            <app-payment-methods></app-payment-methods>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!--Slide Image-->
+    <div class="container col-lg-9 col-md-6" *ngIf="showPaymentMethod && basket.length > 3">
+      <div class="card-header">
+        <div class="form-inline">
+          <span class="material-icons mi-shopping-cart"></span>
+          <span>{{'SHOPPING_CART_MODULE.LABEL_CART' | translate}}</span>
+        </div>
+      </div>
+      <form class="card-body row  mt-4 align-items-center">
+        <div class="col-lg-12" id="slider">
+          <div id="myCarousel" class="carousel slide shadow">
+            <ul class="list-inline mx-auto border px-2">
+              <li class="list-inline-item active" *ngFor="let item of basket; let i=index">
+                <a class="selected">
+                  <img src="{{urlEndpoint + methodLoadCPhoto + item.imageName + '/' + PHOTO_ITEM}}"
+                       style="width: 100px; height: 100px" loading="lazy">
+                  <p class="badge-dark text-white text-center mt-2 pr-1 small rounded">
+                    Cant: {{item.qtyPurchase}} <br> {{item.nameMedia}}
+                  </p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </form>
+      <form *ngIf="showPaymentMethod">
+        <div class="card-header">
+          <div class="form-inline">
+            <span class="material-icons mi-payment"></span>
+            <span> {{'PAYMENT_METHOD_MODULE.LABEL_PAYMENT_METHODS' | translate}}</span>
+          </div>
+        </div>
+        <div class="card-body offset-2">
+          <div class="justify-content-between">
+            <app-payment-methods></app-payment-methods>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-lg-3 col-md-6" *ngIf="basket.length > 0">
+      <form class="card-body">
+        <div class="card-header bg-bar-category bg-text-bar-category mouse-pointer"
+             (click)="deleteBasket()">
+          <span class="material-icons mi-delete-forever"></span>Eliminar todo
+        </div>
+        <div class="card-header bg-bar-category bg-text-bar-category">Resumen</div>
+        <div class=" form-group">
+          <label for="lblSubtotal">Sub-Total</label>
+          <p id="lblSubtotal">45858.58 Bs</p>
+        </div>
+        <div>
+          <div class="dropdown-divider"></div>
+        </div>
+        <div class="form-group">
+          <label for="lblTax">IVA</label>
+          <p id="lblTax">125</p>
+        </div>
+        <div>
+          <div class="dropdown-divider"></div>
+        </div>
+        <div class="form-group">
+          <label for="lblTotal">Total</label>
+          <p id="lblTotal">{{ total | currency : 'Bs.' }}</p>
+        </div>
+        <button type="button" class="btn btn-primary" (click)="toPay()">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+<!--<div class="d-flex justify-content-center pt-2">-->
+<!--<ngb-pagination [collectionSize]="config.totalItems"-->
+<!--[(page)]="config.currentPage"-->
+<!--[maxSize]="config.itemsPerPage"-->
+<!--[rotate]="config.rotate"-->
+<!--[boundaryLinks]="config.boundaryLinks">-->
+<!--<ng-template ngbPaginationFirst>{{config.firstLabel}}</ng-template>-->
+<!--<ng-template ngbPaginationLast>{{config.lasLabel}}</ng-template>-->
+<!--<ng-template ngbPaginationPrevious>{{config.previousLabel}}</ng-template>-->
+<!--<ng-template ngbPaginationNext>{{config.nextLabel}}</ng-template>-->
+<!--</ngb-pagination>-->
+<!--</div>-->

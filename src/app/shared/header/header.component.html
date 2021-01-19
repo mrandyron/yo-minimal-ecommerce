@@ -1,0 +1,41 @@
+<nav class="navbar form-inline navbar-expand-lg navbar-light bg-headers pt-2 pb-1">
+  <a class="navbar-brand" routerLinkActive="text-info active" [routerLink]="['']">
+    <img src="../../../favicon.ico" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+  </a>
+  <form class="form-inline my-lg-0 offset-lg-4 offset-md-2">
+    <app-search-bar></app-search-bar>
+  </form>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
+          aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="mt-2 collapse navbar-collapse offset-lg-3 offset-md-2" id="navbarHeader">
+    <ul class="list-inline">
+      <li class="ml-lg-4 list-inline-item">
+        <span class="material-icons mouse-pointer" style="font-size:xx-large" data-toggle="tooltip"
+              data-placement="bottom" title="Ingresar"
+              [routerLink]="['/login']">perm_identity</span>
+      </li>
+      <li class="ml-lg-4 list-inline-item">
+        <span class="material-icons mouse-pointer mi-font-xx-large" data-toggle="tooltip"
+              data-placement="bottom" title="Crear Cuenta"
+              [routerLink]="['/login/sign-in']">face</span>
+      </li>
+      <li class="ml-lg-4 list-inline-item">
+        <div>
+          <div>
+            <span class="material-icons mouse-pointer mi-font-xx-large position-relative" style="z-index: 50" data-toggle="tooltip"
+                  data-placement="bottom" title="Carrito"
+                  [routerLink]="['/shopping-cart/basket']">shopping_cart</span>
+          </div>
+          <div>
+            <span  class="text-dark badge-pill bg-headers h6 font-weight-bold position-absolute" style="z-index: 100; top: 90%"
+                   [routerLink]="['/shopping-cart/basket']" *ngIf="qtyItemInBasket">{{qtyItemInBasket}}</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+

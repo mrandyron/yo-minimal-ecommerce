@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { AlertsService } from '@shared/services/alerts-service.service';
+import { AlertsModel } from '@shared/models/responseGeneric';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +10,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'YoMinimalECommerce';
+
+  @Input() alertsModel: AlertsModel = new AlertsModel();
+  alertModel$ = new Observable<AlertsModel>(() => {
+    console.log('this.alertsService.getAlert().subscribe()');
+    console.log(this.alertsService.getAlert().subscribe());
+    return this.alertsService.getAlert().subscribe();
+  });
+
+  constructor(private alertsService: AlertsService) {
+  }
+
+  ngChangeAlertsEmmit($event) {
+    this.alertsModel = $event;
+  }
 }

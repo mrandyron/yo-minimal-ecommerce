@@ -1,0 +1,110 @@
+{
+  "GENERIC_TEXT": {
+    "LABEL_ID": "Id",
+    "LABEL_CUSTOMER_IDENTIFICATION": "Cédula del Cliente",
+    "LABEL_SINCE": "Desde",
+    "LABEL_UNTIL": "Hasta",
+    "LABEL_TOTAL": "Total",
+    "LABEL_SUBTOTAL": "Sub-Total",
+    "LABEL_OBSERVATION": "Observación",
+    "LABEL_ACTION": "Acción",
+    "LABEL_CREATION_DATE": "F. Creación",
+    "LABEL_UPDATE_DATE": "F. Actualización",
+    "LABEL_SEARCH": "Buscar",
+    "LABEL_SALE": "Vender",
+    "ATTRIBUTE_TABLE": "En este campo puedes buscar todos los elementos de la lista",
+    "LABEL_DATE": "Fecha",
+    "LABEL_TIME": "Hora",
+    "LABEL_ITEM": "Producto",
+    "LABEL_QTY_SHORT": "Cant",
+    "LABEL_PRICE_UNIT_SHORT": "Precio Unit",
+    "LABEL_PRICE_TOTAL_SHORT": "Precio Total Produc",
+    "EXPORT_SHEET": "Exportar a Excel",
+    "LABEL_PRICE": "Precio",
+    "LABEL_USER": "Usuario",
+    "LABEL_INPUT_ITEM_ID": "Ingrese Nro. de Item",
+    "LABEL_BTN_BACK": "Regresar",
+    "LABEL_BTN_UPDATE": "Actualizar",
+    "LABEL_BTN_OK": "Aceptar",
+    "LABEL_BTN_CREATE": "Crear",
+    "LABEL_SELECTION": "Seleccione"
+  },
+  "INVOICE_MODULE": {
+    "LABEL_ITEM_BUYED": "Artículos Comprados",
+    "LABEL_SALES": "Ventas",
+    "LABEL_LIST_INVOICES": "Listado de Facturación",
+    "LABEL_SEARCH_INVOICE": "Buscar Facturas",
+    "LABEL_ID_INVOICE": "Factura",
+    "LABEL_CUSTOMER": "Cliente: ",
+    "LABEL_IDENTIFICATION_ID": "RIF/CI: ",
+    "LABEL_PRINT_INVOICE": "Imprimir Factura",
+    "REFUND_OK": "Crear Devolución",
+    "REASON_REFUND": "Razón de Devolución",
+    "LABEL_QTY_REFUND": "Devolución x Producto",
+    "LABEL_ITEM_DEFECTIVE_REFUND": "Cant. Defectuosos",
+    "LABEL_ITEM_OTHER_REFUND": "Cant. Otros",
+    "LABEL_TOTAL_USD": "Total USD"
+  },
+  "FOREIGN_CURRENCY": {
+    "TITLE": "Monedas Extranjeras",
+    "LABEL_FOREIGN_TYPE": "Tipo de Moneda",
+    "MSG_TYPE_CURRENCY": "Debe ingresar el tipo de moneda extranjera",
+    "MSG_PRICE": "El precio es requerido",
+    "LABEL_LIST_CURRENCIES": "Listado de Monedas Extranjeras",
+    "LABEL_SEARCH_CURRENCIES": "Buscar Monedas",
+    "LABEL_CREATE_CURRENCY": "Crear Moneda",
+    "LABEL_PRICE_CURRENCY_USD": "Precio USD: ",
+    "LABEL_CHANGE_CUSTOMER": "Cambio",
+    "LABEL_CHANGE_CUSTOMER_BS": "Cambio en Bs. : ",
+    "LABEL_CHANGE_CUSTOMER_USD": "Cambio en $ : ",
+    "LABEL_PAYMENT_MISSING": "Diferencia",
+    "LABEL_PAYMENT_MISSING_BS": "Bs : ",
+    "LABEL_PAYMENT_MISSING_USD": "USD : ",
+    "LABEL_PAYMENT_NO_OK": "El monto de pago no es igual al total"
+  },
+  "ITEM_MODULE": {
+    "NAME_ITEM": "Nombre del Producto",
+    "LABEL_SEARCH_ITEM": "Buscar Productos"
+  },
+  "CONFIGURATION_MODULE": {
+    "TITTLE_SESSION": "Configurar tiempo de sesión",
+    "LABEL_ROL_TYPE": "Tipo de Rol",
+    "LABEL_SESSION_TIMEOUT": "Tiempo de sesión",
+    "LABEL_SESSION_TIMEOUT_LIST_TITTLE": "Listado de configuración de tiempo de sesión",
+    "LABEL_SEARCH_CONFIGURATION": "Buscar Configuración",
+    "LABEL_CREATE_CONFIGURATION": "Crear Configuración"
+  },
+  "ATTRIBUTE_ITEM": {
+    "TITTLE_ATTRIBUTE_ITEM": "Atributos de Productos",
+    "LABEL_COLOR": "Color",
+    "MESSAGE_COLOR": "El color debe tener al menos 3 caracteres",
+    "MESSAGE_MIN_0": "Debe se mayor a 0 (cero)",
+    "LABEL_SIZES": "Talla S",
+    "LABEL_SIZEM": "Talla M",
+    "LABEL_SIZEL": "Talla L",
+    "LABEL_SIZEXL": "Talla XL",
+    "LABEL_SIZEXXL": "Talla XXL",
+    "LABEL_MATERIAL": "Tipo de Material",
+    "LABEL_UNIT_MEASUREMENT": "Tipo de Medida",
+    "OTHERS_ATT": "Otros Atributos"
+  },
+  "LOGIN_MODULE": {
+    "LABEL_USER": "Usuario: ",
+    "LABEL_ROLES": "Rol(es): ",
+    "LABEL_LOGIN": "Login",
+    "LABEL_LOGOUT": "Logout",
+    "LABEL_START_SESSION": "Iniciar Sesión"
+  },
+  "SHOPPING_CART_MODULE": {
+    "LABEL_CART": "Mi Carrito",
+    "LABEL_BASKET_EMPTY":"Aun no tienes nada en el carrito"
+  },
+  "PAYMENT_METHOD_MODULE": {
+    "LABEL_PAYMENT_METHOD":"Pagos",
+    "LABEL_PAYMENT_METHODS":"Métodos de pagos",
+    "LABEL_AMOUNT":"Monto a pagar",
+    "LABEL_REF":"Referencia",
+    "LABEL_COD_REF":"Cód Referencia",
+    "LABEL_BANK_NAME":"Banco"
+  }
+}

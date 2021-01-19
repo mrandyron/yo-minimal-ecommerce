@@ -1,0 +1,10 @@
+#message {
+  position: fixed;
+  top: 90%;
+  right: 0;
+  width: 35%;
+  z-index: 1;
+}
+#inner-message {
+  margin: 0 auto;
+}

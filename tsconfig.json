@@ -1,7 +1,39 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "src",
+    "paths": {
+      "@app/*": [
+        "app/*"
+      ],
+      "@app-login/*": [
+        "app/app-login/*"
+      ],
+      "@assets/*": [
+        "assets/*"
+      ],
+      "@banner-ads/*": [
+        "app/banner-ads/*"
+      ],
+      "@banner-top-item/*": [
+        "app/banner-top-item/*"
+      ],
+      "@constants/*": [
+        "app/constants/*"
+      ],
+      "@environments/*": [
+        "environments/*"
+      ],
+      "@shared/*": [
+        "app/shared/*"
+      ],
+      "@shopping-cart/*": [
+        "app/shopping-cart/*"
+      ],
+      "@payment-methods/*": [
+        "app/payment-methods/*"
+      ]
+    },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
