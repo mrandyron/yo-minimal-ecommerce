@@ -80,19 +80,12 @@ export class ItemListComponent implements OnInit {
   }
 
   putAlert(item: Item) {
+    this.alertTopComponent.alertModel.classCcs = 'bg-headers';
+    this.alertTopComponent.alertModel.message = 'Agregado => '.concat(item.nameMedia);
+    this.alertTopComponent.alertModel.isShow = true;
 
-    // this.alertsModel = new AlertsModel();
-    this.alertsModel.classCcs = 'alert-danger';
-    this.alertsModel.message = 'Se agrego al carrito => '.concat(item.nameMedia);
-    this.alertsModel.isShow = false;
-    this.alertTopComponent.alertModel = this.alertsModel;
     setTimeout(() => {
-      this.alertsModel = new AlertsModel();
-      this.alertsModel.isShow = true;
-      this.alertTopComponent.alertModel = this.alertsModel;
-      console.log('ejecutando');
-    }, 1000);
-
-
+      this.alertTopComponent.alertModel.isShow = false;
+    }, 2000);
   }
 }

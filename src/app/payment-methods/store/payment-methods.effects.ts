@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, concatMap, map, exhaustMap } from 'rxjs/operators';
+import { catchError, concatMap, map} from 'rxjs/operators';
 import { of } from 'rxjs';
 import { Actions, createEffect, Effect, ofType } from '@ngrx/effects';
 

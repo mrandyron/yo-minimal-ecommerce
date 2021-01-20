@@ -1,10 +1,10 @@
-<div id="message">
+<div id="message" *ngIf="alertModel.isShow">
   <div style="padding: 5px;">
-    <div id="inner-message" class="alert {{alertModel.classCcs}}">
+    <div id="inner-message" class="alert {{alertModel.classCcs}} alert-dismissible fade show" role="alert">
       <button class="close" type="button" data-dismiss="alert">&times;</button>
       <div class="form-inline">
         <span class="material-icons mi-remove-red-eye"></span>
-        <span class="ml-1 text-black-50">{{alertModel.message }}</span>
+        <span class="ml-1">{{alertModel.message }}</span>
       </div>
     </div>
   </div>
