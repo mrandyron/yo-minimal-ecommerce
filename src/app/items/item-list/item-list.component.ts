@@ -35,6 +35,7 @@ export class ItemListComponent implements OnInit {
 
   public urlEndpoint = Constants.URL_ENDPOINT;
   public methodLoadCPhoto = 'image/get/upload/';
+  private classLabel: string;
 
   constructor(private store: Store<ItemsMethodsState>,
               private storeShoppingCart: Store<ShoppingCartItemState>) {
@@ -87,5 +88,27 @@ export class ItemListComponent implements OnInit {
     setTimeout(() => {
       this.alertTopComponent.alertModel.isShow = false;
     }, 2000);
+  }
+
+  setStockColor(stock: number): string {
+    let classBadge = '';
+
+    switch (stock) {
+      case (stock >= 1 && stock <= 4):
+        classBadge = 'danger';
+        this.classLabel = 'Stock Bajo';
+        break;
+      case(stock >= 5 && stock <= 19):
+        classBadge = 'warning';
+        this.classLabel = 'Stock Medio';
+        break;
+      case(stock >= 20):
+        classBadge = 'success';
+        this.classLabel = 'Stock Medio';
+        break;
+    }
+    return this.classLabel;
+
+
   }
 }
