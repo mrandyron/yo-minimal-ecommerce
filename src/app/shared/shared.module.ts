@@ -16,6 +16,7 @@ import { ImageLazyLoadingDirective } from './directives/image-lazy-loading.direc
 import { RefreshComponentComponent } from './refresh-component/refresh-component.component';
 import { AlertsService } from '@shared/services/alerts-service.service';
 
+
 @NgModule({
   declarations: [
     CategoryItemsComponent,
@@ -43,7 +44,8 @@ import { AlertsService } from '@shared/services/alerts-service.service';
     CategoryItemsComponent,
     FooterComponent,
     SideBarComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    NgbModule
   ],
   providers: [
     ItemsService,

@@ -13,6 +13,7 @@ export class ItemsService {
   private urlEndpoint = Constants.URL_ENDPOINT;
   private methodUrlGetItemsAll = 'items/get/item-all';
   private methodUrlGetItemsByWord = 'items/get/by/words/';
+  private methodUrlGetItemsById = 'items/get/item-id/';
 
   constructor(private http: HttpClient) {
   }
@@ -26,8 +27,12 @@ export class ItemsService {
     );
   }
 
-  // getItemsByWords(word: string): Observable<ResponseItem> {
-  //   return this.http.get<ResponseItem>(this.urlEndpoint + this.methodUrlGetItemsByWord + word);
-  // }
+  getItemById(id: number): Observable<ResponseItem> {
+    return this.http.get<ResponseItem>(this.urlEndpoint + this.methodUrlGetItemsById + id);
+  }
+
+  getItemsByWords(word: string): Observable<ResponseItem> {
+    return this.http.get<ResponseItem>(this.urlEndpoint + this.methodUrlGetItemsByWord + word);
+  }
 
 }

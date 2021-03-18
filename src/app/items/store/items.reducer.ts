@@ -1,4 +1,4 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { Action, createReducer } from '@ngrx/store';
 import * as ItemsActions from './items.actions';
 import { ResponseItem } from '../models/item';
 
@@ -21,6 +21,15 @@ const itemsMethodReducer = createReducer(
       return {
         ...state,
         responseItem: { ...state.responseItem, word: searchWord }
+      };
+    }
+  ),
+  on(
+    ItemsActions.searchItemsById,
+    (state, { id }) => {
+      return {
+        ...state,
+        responseItem: { ...state.responseItem, searchId: id }
       };
     }
   ),

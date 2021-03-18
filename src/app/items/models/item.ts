@@ -1,4 +1,4 @@
-export interface Item {
+export class Item {
   id: number;
   name: string;
   nameMedia: string;
@@ -18,7 +18,7 @@ export interface Item {
   attributesItem: AttributesItem;
 }
 
-export interface AttributesItem {
+export class AttributesItem {
   id: number;
   color: string;
   sizeS: number;

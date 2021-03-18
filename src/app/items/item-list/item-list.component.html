@@ -13,17 +13,23 @@
         </button>
       </div>
     </nav>
-    <ul class="navbar nav mt-4 ml-3">
-      <li class="nav-item" *ngFor="let item of items">
+    <ul class="form-inline mt-4 ml-3">
+      <li class="mouse-pointer ml-3 list-inline-item" *ngFor="let item of items | slice: ((config.currentPage-1) * config.itemsPerPage)
+        : ((config.currentPage-1) * config.itemsPerPage + config.itemsPerPage)">
         <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem; height: 25rem">
           <img
             src="{{urlEndpoint + methodLoadCPhoto + item.imageName + '/' + PHOTO_ITEM }}"
+            [routerLink]="['/items-module/item-detail',  item.id]"
             class="card-img-top image-size" alt="{{item.nameMedia}}" loading="lazy">
           <div class="card-body">
-            <h5 class="card-title">{{item.nameMedia}}</h5>
-            <p class="text-left">{{item.price | currency : 'Bs.'}}</p>
-            <p class="text-left" *ngIf="item.quantity > 0">Cantidad: {{item.quantity}}
-              <span type="button" class="material-icons ml-4 text-dark" (click)="sendItemToShoppingCart(item)">add_shopping_cart</span></p>
+            <h6 class="card-title">{{item.nameMedia}}</h6>
+            <p class="text-left h6">{{item.price | currency : 'Bs.'}}</p>
+            <div class="text-left form-inline" *ngIf="item.quantity > 0">
+              <span [class]="'mt-4 text-black-50 badge badge-'.concat(setStockColor(item.quantity))">{{classLabel.toUpperCase()}}</span>
+              <span
+                class="mt-4 material-icons ml-4 text-dark border-dark mi-add-shopping-cart mi-font-medium mouse-pointer"
+                (click)="sendItemToShoppingCart(item)"></span>
+            </div>
             <p class="text-center badge badge-warning" *ngIf="item.quantity < 1">No Disponible</p>
           </div>
         </div>
@@ -31,3 +37,16 @@
     </ul>
   </div>
 </div>
+<div class="d-flex justify-content-center pt-2 position-sticky" style="z-index: 1">
+  <ngb-pagination [collectionSize]="config.totalItems"
+                  [(page)]="config.currentPage"
+                  [maxSize]="config.itemsPerPage"
+                  [rotate]="config.rotate"
+                  [boundaryLinks]="config.boundaryLinks">
+    <ng-template ngbPaginationFirst>{{config.firstLabel}}</ng-template>
+    <ng-template ngbPaginationLast>{{config.lasLabel}}</ng-template>
+    <ng-template ngbPaginationPrevious>{{config.previousLabel}}</ng-template>
+    <ng-template ngbPaginationNext>{{config.nextLabel}}</ng-template>
+  </ngb-pagination>
+</div>
+

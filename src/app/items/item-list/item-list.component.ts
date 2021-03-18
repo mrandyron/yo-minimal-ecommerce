@@ -19,8 +19,8 @@ import { AlertTopComponent } from '@shared/alerts/alert-top/alert-top.component'
 })
 export class ItemListComponent implements OnInit {
 
-  @ViewChild('sidebar', { static: false }) buttonSideBarCollapse: ElementRef;
-  @ViewChild(AlertTopComponent, { static: false }) alertTopComponent: AlertTopComponent;
+  @ViewChild('sidebar') buttonSideBarCollapse: ElementRef;
+  @ViewChild(AlertTopComponent) alertTopComponent: AlertTopComponent;
   @Input() inHome: boolean;
 
   toggleClass = '';
@@ -30,12 +30,25 @@ export class ItemListComponent implements OnInit {
   basket$: Observable<any>;
   alertsModel: AlertsModel = new AlertsModel();
 
+  // Pagination
+  config: any = {
+    itemsPerPage: Constants.ITEMS_PER_PAGE,
+    totalItems: 0,
+    currentPage: Constants.PAGE_NO,
+    boundaryLinks: true,
+    rotate: true,
+    firstLabel: Constants.FIRST_LABEL,
+    lasLabel: Constants.LAST_LABEL,
+    previousLabel: Constants.PREVIOUS_LABEL,
+    nextLabel: Constants.NEXT_LABEL
+  };
+
   image: string;
   PHOTO_ITEM = Constants.PHOTO_ITEM;
 
   public urlEndpoint = Constants.URL_ENDPOINT;
   public methodLoadCPhoto = 'image/get/upload/';
-  private classLabel: string;
+  public classLabel: string;
 
   constructor(private store: Store<ItemsMethodsState>,
               private storeShoppingCart: Store<ShoppingCartItemState>) {
@@ -53,7 +66,7 @@ export class ItemListComponent implements OnInit {
     }
   }
 
-  getAllItems() {
+  getAllItems(): void {
     this.items$ = this.store.select(itemsMethodFeatureKey);
     // Activar en caso de requerir paginado y replicar en el resto del proyecto donde se requiera
     // this.itemsByPagination('0', this.itemsPerPage.toString());
@@ -62,6 +75,7 @@ export class ItemListComponent implements OnInit {
         let responseItem: ResponseItem;
         responseItem = response.responseItem;
         this.items = responseItem.items;
+        this.config.totalItems = this.items.length;
         // this.progressBarComponentVar.isProgressActive = true;
         // this.config.totalItems = this.items.length;
         // this.orderItemsByDateDesc();
@@ -91,24 +105,20 @@ export class ItemListComponent implements OnInit {
   }
 
   setStockColor(stock: number): string {
+
     let classBadge = '';
 
-    switch (stock) {
-      case (stock >= 1 && stock <= 4):
-        classBadge = 'danger';
-        this.classLabel = 'Stock Bajo';
-        break;
-      case(stock >= 5 && stock <= 19):
-        classBadge = 'warning';
-        this.classLabel = 'Stock Medio';
-        break;
-      case(stock >= 20):
-        classBadge = 'success';
-        this.classLabel = 'Stock Medio';
-        break;
+    if (stock >= 1 && stock <= 4) {
+      classBadge = 'danger';
+      this.classLabel = 'Stock Bajo';
+    } else if (stock >= 5 && stock <= 19) {
+      classBadge = 'warning';
+      this.classLabel = 'Stock Medio';
+    } else {
+      classBadge = 'success';
+      this.classLabel = 'Stock Alto';
     }
-    return this.classLabel;
 
-
+    return classBadge;
   }
 }

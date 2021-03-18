@@ -8,7 +8,7 @@ import { Item, ResponseItem } from '@app/items/models/item';
 import { Store } from '@ngrx/store';
 import { itemsMethodFeatureKey, ItemsMethodsState } from '@app/items/store/items.reducer';
 import { Router } from '@angular/router';
-import { itemFeatureKey, ShoppingCartItemState } from '@shopping-cart/store/shopping-cart.reducer';
+
 
 @Component({
   selector: 'app-search-bar',

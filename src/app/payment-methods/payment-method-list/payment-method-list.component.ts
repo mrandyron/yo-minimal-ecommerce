@@ -7,7 +7,6 @@ import { paymentMethodFeatureKey, PaymentMethodState } from '@payment-methods/st
 import { PaymentInvoice, PaymentMethod } from '@payment-methods/models/payment-method';
 import { Router } from '@angular/router';
 import { AlertsService } from '@shared/services/alerts-service.service';
-import { AlertsModel } from '@shared/models/responseGeneric';
 
 
 @Component({

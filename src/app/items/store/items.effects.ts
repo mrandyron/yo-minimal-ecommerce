@@ -7,25 +7,35 @@ import { Actions, createEffect, Effect, ofType } from '@ngrx/effects';
 import * as ItemsActions from './items.actions';
 import { Constants } from '@constants/constansts';
 import { ResponseItem } from '@app/items/models/item';
+import { ItemsService } from '@app/items/items.service';
 
 
 @Injectable()
 export class ItemsEffects {
 
-  private urlEndpoint = Constants.URL_ENDPOINT;
-  private methodUrlGetItemsAll = 'items/get/item-all';
-  private methodUrlGetItemsByWord = 'items/get/by/words/';
-
   constructor(private actions$: Actions,
-              private http: HttpClient) {
+              private http: HttpClient,
+              private itemsService: ItemsService) {
 
   }
 
   @Effect()
   public searchItemsByWords = createEffect(() => this.actions$.pipe(
     ofType(ItemsActions.searchItemsByWords),
-    concatMap(action => this.http.get<ResponseItem>
-    (this.urlEndpoint + this.methodUrlGetItemsByWord + action.searchWord).pipe(
+    concatMap(action =>
+      this.itemsService.getItemsByWords(action.searchWord).pipe(
+        map(res =>
+          ItemsActions.loadItemsSuccess({ responseItem: res })
+        ),
+        catchError(err =>
+          of(ItemsActions.loadItemsError({ responseItem: err }))
+        )
+      ))));
+
+  @Effect()
+  public getItemsAll = createEffect(() => this.actions$.pipe(
+    ofType(ItemsActions.searchAllItems),
+    concatMap(action => this.itemsService.getItemsAll().pipe(
       map(res =>
         ItemsActions.loadItemsSuccess({ responseItem: res })
       ),
@@ -35,16 +45,16 @@ export class ItemsEffects {
     ))));
 
   @Effect()
-  public getItemsAll = createEffect(() => this.actions$.pipe(
-    ofType(ItemsActions.searchAllItems),
-    concatMap(action => this.http.get<ResponseItem>
-    (this.urlEndpoint + this.methodUrlGetItemsAll, { reportProgress: true }).pipe(
-      map(res =>
-        ItemsActions.loadItemsSuccess({ responseItem: res })
-      ),
-      catchError(err =>
-        of(ItemsActions.loadItemsError({ responseItem: err }))
-      )
-    ))));
+  public searchItemsById = createEffect(() => this.actions$.pipe(
+    ofType(ItemsActions.searchItemsById),
+    concatMap(action =>
+      this.itemsService.getItemById(action.id).pipe(
+        map(res =>
+          ItemsActions.loadItemsSuccess({ responseItem: res })
+        ),
+        catchError(err =>
+          of(ItemsActions.loadItemsError({ responseItem: err }))
+        )
+      ))));
 
 }

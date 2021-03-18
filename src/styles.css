@@ -21,6 +21,10 @@
   background-color: #e5e5e5;
 }
 
+.shadow-custom-0 {
+  box-shadow: 1px 5px 5px black;
+}
+
 .wrapper-side-bar {
   display: flex;
   align-items: stretch;

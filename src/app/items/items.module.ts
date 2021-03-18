@@ -7,12 +7,13 @@ import { ItemsRoutingModule } from './items-routing.module';
 import { ItemListComponent } from '@app/items/item-list/item-list.component';
 import { SharedModule } from '@shared/shared.module';
 import { AlertsModule } from '@shared/alerts/alerts.module';
-import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { ItemDetailComponent } from './item-detail/item-detail.component';
 
 
 @NgModule({
   declarations: [
-    ItemListComponent
+    ItemListComponent,
+    ItemDetailComponent
   ],
   imports: [
     CommonModule,

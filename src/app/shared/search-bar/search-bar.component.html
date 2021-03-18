@@ -5,7 +5,7 @@
            class="form-control rounded-0"
            [(ngModel)]="word"
            [ngbTypeahead]="search"
-           placeholder="Buscar productos"/>
+           placeholder= "Buscar productos..."/>
     <button [disabled]="this.word.length < 3"
             class="btn material-icons mi-search border-left ml-4"
             (click)="searchWord()"></button>

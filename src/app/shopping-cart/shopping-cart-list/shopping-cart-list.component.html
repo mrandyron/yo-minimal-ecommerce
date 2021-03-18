@@ -5,8 +5,9 @@
         class="material-icons mi-font-large">remove_shopping_cart</span></h1>
     </div>
   </div>
-  <div class="row">
-    <div class="col-lg-9 col-md-6" *ngIf="!showPaymentMethod && basket.length > 0 ">
+  <form class="row">
+    <div class="col-lg-9 col-md-6"
+         *ngIf="!showPaymentMethod && basket.length > 0 ">
       <div class="card-header">
         <div class="form-inline">
           <span class="material-icons mi-shopping-cart"></span>
@@ -49,26 +50,14 @@
           </div>
         </form>
       </form>
-      <form *ngIf="showPaymentMethod">
-        <div class="card-header">
-          <div class="form-inline">
-            <span class="material-icons mi-payment"></span>
-            <span> {{'PAYMENT_METHOD_MODULE.LABEL_PAYMENT_METHODS' | translate}}</span>
-          </div>
-        </div>
-        <div class="card-body offset-2">
-          <div class="justify-content-between">
-            <app-payment-methods></app-payment-methods>
-          </div>
-        </div>
-      </form>
     </div>
     <div class="col-lg-9 col-md-6" *ngIf="showPaymentMethod && basket.length > 0 &&  basket.length < 4">
       <div class="card-header">
-        <div class="form-inline row">
+        <div class="form-inline">
           <span class="material-icons mi-shopping-cart"></span>
           <span>{{'SHOPPING_CART_MODULE.LABEL_CART' | translate}}</span>
-          <span class="material-icons mi-arrow-back offset-lg-10 offset-md-3"></span>
+          <span class="material-icons mi-backspace mouse-pointer offset-lg-10 offset-md-3"
+                (click)="backToBasket()"></span>
         </div>
       </div>
       <form class="card-body">
@@ -100,22 +89,9 @@
           </div>
         </form>
       </form>
-      <form *ngIf="showPaymentMethod">
-        <div class="card-header">
-          <div class="form-inline">
-            <span class="material-icons mi-payment"></span>
-            <span> {{'PAYMENT_METHOD_MODULE.LABEL_PAYMENT_METHODS' | translate}}</span>
-          </div>
-        </div>
-        <div class="card-body offset-2">
-          <div class="justify-content-between">
-            <app-payment-methods></app-payment-methods>
-          </div>
-        </div>
-      </form>
     </div>
     <!--Slide Image-->
-    <div class="container col-lg-9 col-md-6" *ngIf="showPaymentMethod && basket.length > 3">
+    <div class="col-lg-9 col-md-6" *ngIf="showPaymentMethod && basket.length > 3">
       <div class="card-header">
         <div class="form-inline">
           <span class="material-icons mi-shopping-cart"></span>
@@ -139,21 +115,7 @@
           </div>
         </div>
       </form>
-      <form *ngIf="showPaymentMethod">
-        <div class="card-header">
-          <div class="form-inline">
-            <span class="material-icons mi-payment"></span>
-            <span> {{'PAYMENT_METHOD_MODULE.LABEL_PAYMENT_METHODS' | translate}}</span>
-          </div>
-        </div>
-        <div class="card-body offset-2">
-          <div class="justify-content-between">
-            <app-payment-methods></app-payment-methods>
-          </div>
-        </div>
-      </form>
     </div>
-
     <div class="col-lg-3 col-md-6" *ngIf="basket.length > 0">
       <form class="card-body">
         <div class="card-header bg-bar-category bg-text-bar-category mouse-pointer"
@@ -163,14 +125,14 @@
         <div class="card-header bg-bar-category bg-text-bar-category">Resumen</div>
         <div class=" form-group">
           <label for="lblSubtotal">Sub-Total</label>
-          <p id="lblSubtotal">45858.58 Bs</p>
+          <p id="lblSubtotal">{{subTotal | currency : 'Bs.'}}</p>
         </div>
         <div>
           <div class="dropdown-divider"></div>
         </div>
         <div class="form-group">
           <label for="lblTax">IVA</label>
-          <p id="lblTax">125</p>
+          <p id="lblTax">{{taxes | currency: 'Bs.'}}</p>
         </div>
         <div>
           <div class="dropdown-divider"></div>
@@ -179,10 +141,18 @@
           <label for="lblTotal">Total</label>
           <p id="lblTotal">{{ total | currency : 'Bs.' }}</p>
         </div>
-        <button type="button" class="btn btn-primary" (click)="toPay()">Submit</button>
+        <button type="button" class="btn btn-primary" *ngIf="!showPaymentMethod" (click)="toPay()">
+          {{'SHOPPING_CART_MODULE.BUTTON_PAYMENT_CHECK'
+          | translate}}
+        </button>
       </form>
     </div>
-  </div>
+    <div class="col-lg-9 col-md-6" *ngIf="showPaymentMethod">
+      <form>
+        <app-payment-methods></app-payment-methods>
+      </form>
+    </div>
+  </form>
 </div>
 <!--<div class="d-flex justify-content-center pt-2">-->
 <!--<ngb-pagination [collectionSize]="config.totalItems"-->

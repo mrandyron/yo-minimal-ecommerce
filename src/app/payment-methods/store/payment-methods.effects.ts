@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, concatMap, map} from 'rxjs/operators';
+import { catchError, concatMap, distinct, map } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { Actions, createEffect, Effect, ofType } from '@ngrx/effects';
 
@@ -41,6 +41,7 @@ export class PaymentMethodsEffects {
   @Effect()
   public savePaymentInvoice = createEffect(() => this.actions$.pipe(
     ofType(PaymentMethodActions.savePaymentInvoice),
+    distinct(action => action.paymentInvoiceInput),
     concatMap(action =>
       this.paymentMethodsService.createPaymentInvoice(action.paymentInvoiceInput)
         .pipe(

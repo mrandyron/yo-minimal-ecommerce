@@ -6,8 +6,6 @@ import { Store } from '@ngrx/store';
 import { Item } from '@app/items/models/item';
 import { Constants } from '@constants/constansts';
 import * as ShoppingCartActions from '../store/shopping-cart.actions';
-import { AlertsModel } from '@shared/models/responseGeneric';
-import { AlertsService } from '@shared/services/alerts-service.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -17,10 +15,12 @@ import { AlertsService } from '@shared/services/alerts-service.service';
 export class ShoppingCartListComponent implements OnDestroy {
 
   basket$: Observable<any>;
-  private basket: Item[];
+  public basket: Item[];
   private cart: Item[];
   public items$: Observable<any>;
   total = 0;
+  subTotal = 0;
+  taxes = 0;
   showPaymentMethod = false;
 
   image: string;
@@ -57,6 +57,9 @@ export class ShoppingCartListComponent implements OnDestroy {
 
   totalResult() {
     this.total = this.basket.reduce((a, b) => (a + (b.qtyPurchase * b.price)), 0);
+    const taxes = ((this.total * 0.16) / 100);
+    this.subTotal = this.total - taxes;
+    this.taxes = taxes;
   }
 
   addItemToBasket(itemAdd: Item) {
@@ -79,9 +82,14 @@ export class ShoppingCartListComponent implements OnDestroy {
     this.storeShoppingCart.dispatch(ShoppingCartActions.decrementItemToShoppingCart({ basket: this.cart, item: itemAdd }));
   }
 
+  backToBasket() {
+    this.showPaymentMethod = false;
+  }
+
   toPay() {
     this.showPaymentMethod = true;
   }
+
 
   ngOnDestroy() {
     this.items$.subscribe().unsubscribe();

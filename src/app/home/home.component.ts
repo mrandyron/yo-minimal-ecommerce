@@ -13,7 +13,8 @@ import { ItemListComponent } from '@app/items/item-list/item-list.component';
 export class HomeComponent implements OnInit {
   items$: Observable<any>;
   itemsGreaterZero = false;
-  @ViewChild(ItemListComponent, { static: false }) itemListVar: ItemListComponent;
+  @ViewChild(ItemListComponent) itemListVar: ItemListComponent;
+  public inHome = false;
 
   constructor(private store: Store<ItemsMethodsState>) {
   }

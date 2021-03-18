@@ -97,7 +97,8 @@
   },
   "SHOPPING_CART_MODULE": {
     "LABEL_CART": "Mi Carrito",
-    "LABEL_BASKET_EMPTY":"Aun no tienes nada en el carrito"
+    "LABEL_BASKET_EMPTY":"Aun no tienes nada en el carrito",
+    "BUTTON_PAYMENT_CHECK":"Proceder"
   },
   "PAYMENT_METHOD_MODULE": {
     "LABEL_PAYMENT_METHOD":"Pagos",
