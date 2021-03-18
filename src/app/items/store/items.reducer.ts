@@ -1,4 +1,4 @@
-import { Action, createReducer } from '@ngrx/store';
+import { Action, createReducer, on } from '@ngrx/store';
 import * as ItemsActions from './items.actions';
 import { ResponseItem } from '../models/item';
 
